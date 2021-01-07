@@ -2,7 +2,7 @@
 <h1 class="h2">Posts</h1>
 <section>
 <ul class="postlist">
-  {{ range sort .Pages }}
+  {{ range .Pages.ByDate }}
   <li>
     <a href="{{.RelPermalink}}">
       <div class="h4 title">{{ .Title }}</div>
