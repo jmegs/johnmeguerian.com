@@ -1,0 +1,24 @@
+{{ $c := "https://res.cloudinary.com/jmegs/" }}
+{{ $w := 1920 }}
+{{ $h := 1280 }}
+{{ with .height }} {{ $h = . }} {{ end }}
+
+<figure>
+  <img
+    width="{{ $w }}"
+    height="{{ $h }}"
+    loading="lazy"
+    sizes="(min-width: 1280px) 1200px, 100vw"
+    srcset="
+      {{$c}}f_auto,w_360/{{.src}}   360w,
+      {{$c}}f_auto,w_720/{{.src}}   720w,
+      {{$c}}f_auto,w_1200/{{.src}} 1200w,
+      {{$c}}f_auto,w_2400/{{.src}} 2400w
+    "
+    src="{{$c}}f_auto,w_1200/{{.src}}"
+    alt="{{ with .alt }}{{.}}{{end}}"
+  />
+  {{ with .caption }}
+  <figcaption>{{ . }}</figcaption>
+  {{ end }}
+</figure>

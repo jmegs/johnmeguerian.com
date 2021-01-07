@@ -1,0 +1,18 @@
+{{ $commitref := getenv "VERCEL_COMMIT_SHA"}}
+{{ $repo := $.Site.Params.colo.repo }}
+
+{{ $baseurl := (print $repo "/commit/") }}
+{{ $href := ""}}
+
+{{ with $commitref }}
+  {{ $href = print $baseurl (substr $commitref 0 7) }}
+{{ else }}
+  {{ $href = "#"}}
+{{ end }}
+
+<a href="{{ $href }}" class="navbutton">
+  <div class="icon-text meta">
+    {{- partial "icon" "commit" -}}
+    <span>{{ or (substr $commitref 0 7) "Local" }}</span>
+  </div>
+</a>

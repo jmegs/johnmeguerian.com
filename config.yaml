@@ -1,0 +1,48 @@
+baseURL: "https://johnmeguerian.com"
+languageCode: "en-us"
+title: "John Meguerian"
+
+pygmentsUseClasses: true
+pygmentsCodeFences: true
+
+disableKinds: [taxonomy, term, category, RSS]
+
+menu:
+  main:
+  - identifier: work
+    name: Work
+    url: /
+    weight: 1
+  - identifier: posts
+    name: Posts
+    url: /posts/
+    weight: 2
+
+params:
+  description: John Meguerian is a concept to code product designer based in NYC.
+  cloudurl: https://res.cloudinary.com/jmegs/
+
+  social:
+    - name: Twitter
+      url: https://twitter.com/jmegs
+    - name: Instagram
+      url: https://instagram.com/jmegs_
+    - name: Github
+      url: https://github.com/jmegs
+    - name: Linkedin
+      url: https://linkedin.com/in/johnmeguerian
+  
+  colo:
+    generator: 
+      name: Hugo
+      url: https://gohugo.io
+    fonts:
+      - name: Neue Haas Grotesk
+        url: https://fonts.adobe.com/fonts/neue-haas-grotesk
+      - name: IvyPresto
+        url: https://fonts.adobe.com/fonts/ivypresto-display
+    host: 
+      name: Vercel
+      url: https://vercel.com
+    repo: https://github.com/jmegs/johnmeguerian.com
+

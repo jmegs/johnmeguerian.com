@@ -1,0 +1,82 @@
+{{ define "main" }}
+
+<section id="intro">
+  <h1 class="h1 clamp">
+    John Meguerian is a <span class="accent">concept to code</span> product
+    designer based in NYC.
+  </h1>
+</section>
+
+<section id="work">
+  <div class="icon-text meta">
+    {{- partial "icon" "arrow-down" -}}
+    <h2>Select Work and Side Projects</h2>
+  </div>
+  <div class="thumbnails">
+    <!-- #region projects -->
+    {{ range where .Site.RegularPages "Section" "projects" }}
+    <a
+      href="{{.RelPermalink}}"
+      class="thumbnail"
+      style="--span-cols: {{.Params.thumbnail.cols}}"
+    >
+      <div class="thumbnail-img">
+        <!-- TODO srcset and sizes -->
+        <img src="{{.Site.Params.cloudurl}}{{.Params.thumbnail.src}}" alt="" />
+      </div>
+      <div class="title-wrap h5">
+        <span class="">{{.Title}}</span>
+        &nbsp;·&nbsp;
+        <span class="accent">{{.Params.client}}</span>
+      </div>
+    </a>
+    {{ end }}
+    <!-- #endregion -->
+    <!-- #region sideprojects -->
+    {{ range .Site.Data.sideprojects }}
+    <a
+      href="{{.url}}"
+      class="thumbnail"
+      style="--span-cols: {{.thumbnail.cols}}"
+    >
+      <div class="thumbnail-img">
+        <!-- TODO srcset and sizes -->
+        <img src="{{$.Site.Params.cloudurl}}{{.thumbnail.src}}" alt="" />
+      </div>
+      <div class="title-wrap h5 icon-text">
+        <span class="">{{.name}}</span>
+        {{- partial "icon" "external-link" -}}
+      </div>
+    </a>
+    {{ end }}
+    <!-- #endregion -->
+  </div>
+</section>
+
+<section id="about">
+  <div class="heading">
+    <h2 class="h3">About Me</h2>
+  </div>
+  <div class="content">
+    <p>
+      Currently a Senior Product Designer at
+      <a href="https://squarespace.com">Squarespace</a>, I specialize in
+      clarifying complex ecosystems, creating digital experiences in physical
+      spaces, and prototyping ideas in code.
+    </p>
+    <p>
+      On the Trial Experience team at Squarespace I create onboarding,
+      educational features, and cross-team collaborations that enable a coherent
+      user experience across the full product and drive business growth.
+      Additionally, I build tools and processes that empower collaboration
+      between designers and engineers.
+    </p>
+    <p>
+      Previously I worked in Experience Design at
+      <a href="https://rga.com">R/GA</a>, where I built products and
+      tech-enabled consumer experiences for the world’s biggest brands inlcuding
+      Samsung, Mercedes, Equinox, and Verizon.
+    </p>
+  </div>
+</section>
+{{ end }}

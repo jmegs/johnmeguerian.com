@@ -1,0 +1,47 @@
+{{ $c := .Site.Params.cloudurl }}
+{{ $ogfallback := "ogfallback.jpg" }}
+{{ $fm := "c_fill,w_1024,h_512,q_auto:best,f_auto/" }}
+
+{{ hugo.Generator }}
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="John Meguerian">
+
+<!-- titles -->
+{{- if .IsHome }}
+<title>{{ .Site.Title }}</title>
+<meta property="og:title" content="{{ .Site.Title }}" />
+{{- else }}
+<title>{{ .Title }} | {{ .Site.Title }}</title>
+<meta property="og:title" content="{{ .Title }} | {{ .Site.Title }}" />
+{{- end }}
+
+<!-- required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- share tags -->
+<meta property="og:image" content="{{ $c }}{{ $fm }}{{ with .Params.ogimg }}{{ . }}{{ else }}{{ $ogfallback }}{{ end }}" />
+
+{{- if .IsHome }}
+<meta name="description" content="{{ .Site.Params.Description }}">
+<meta property="og:description" content="{{ .Site.Params.Description }}" />
+<meta property="og:url" content="{{ .Site.BaseURL }}" />
+<link rel="canonical" href="{{ .Site.BaseURL }}" />
+{{- else }}
+<meta name="description" content="{{ .Params.Description }}">
+<meta property="og:description" content="{{ .Params.Description }}" />
+<meta property="og:url" content="{{ .Page.Permalink }}" />
+<link rel="canonical" href="{{ .Page.Permalink }}" />
+{{- end }}
+
+<!-- twitter specifics -->
+<meta name="twitter:site" content="@jmegs">
+<meta name="twitter:creator" content="@jmegs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:alt" content="image description">
+
+<!-- favicon -->
+<link rel="icon" href="/favicon.svg">
+<link rel="mask-icon" href="/mask-icon.svg" color="#FDE68A">

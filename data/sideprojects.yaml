@@ -1,0 +1,12 @@
+- name: Tiny Tools
+  weight: 5
+  url: https://tinytools.design
+  thumbnail: 
+    src: folio/thumbs/tiny-tools-trns.png
+    cols: 8
+- name: Bread Math
+  weight: 6
+  url: https://breadmath.com
+  thumbnail: 
+    src: folio/thumbs/bread-math-trns.png
+    cols: 4

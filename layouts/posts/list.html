@@ -1,0 +1,19 @@
+{{ define "main" }}
+<h1 class="h2">Posts</h1>
+<section>
+<ul class="postlist">
+  {{ range sort .Pages }}
+  <li>
+    <a href="{{.RelPermalink}}">
+      <div class="h4 title">{{ .Title }}</div>
+      {{- if ne .PublishDate .Lastmod }} 
+        Updated: {{ .Lastmod.Format "January 2, 2006" }} 
+      {{ else }} 
+        {{ .PublishDate.Format "January 2, 2006" }} 
+      {{ end }} 
+    </a>
+  </li>
+  {{ end }}
+</ul>
+</section>  
+{{ end }}

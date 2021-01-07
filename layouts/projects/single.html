@@ -1,0 +1,34 @@
+{{ define "main" }}
+<article class="project">
+  <section class="header">
+    <h1 class="h1">
+      <span class="accent">{{ .Params.client }}</span>
+      <br />
+      <span>{{ .Title }}</span>
+    </h1>
+
+  </section>
+  
+  {{ with .Params.hero }}
+    <section class="hero">
+      {{- partial "projects/figure" . -}} 
+    </section>
+  {{ end }}
+
+  <section class="info">
+    <dl class="metadata">
+      <dt class="meta">Timeline</dt>
+      <dd>{{ .Params.timeline }}</dd>
+
+      <dt class="meta">My Role</dt>
+      {{ range .Params.role }}<dd>{{ . }}</dd>{{ end }}
+    </dl>
+
+    <div class="content">{{ .Content }}</div>
+  </section>
+
+  <section class="gallery">
+    {{ range .Params.images }} {{- partial "projects/figure" . -}} {{ end }}
+  </section>
+</article>
+{{ end }}

@@ -1,0 +1,16 @@
+{{ $options := dict "inlineImports" true }} 
+
+{{ $styles := resources.Get "css/style.css" }} 
+{{ $syntax := resources.Get "css/syntax.css" }}
+
+{{ $styles = $styles | resources.PostCSS $options }} 
+
+{{ if hugo.IsProduction }} 
+  {{ $styles = $styles | minify | fingerprint | resources.PostProcess }} 
+{{ end }}
+
+<link rel="stylesheet" href="https://use.typekit.net/pmn5fwq.css">
+<link href="{{ $styles.RelPermalink }}" rel="stylesheet" />
+
+<!-- TODO syntax only on post pages -->
+<link href="{{ $syntax.RelPermalink }}" rel="stylesheet" />

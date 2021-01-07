@@ -1,0 +1,29 @@
+{{ $c := $.Site.Params.cloudurl }}
+
+
+{{ $src := .Get "src" }}
+{{ $alt := .Get "alt" }}
+{{ $w := or (.Get "w") 1920 }}
+{{ $h := or (.Get "h") 1280 }}
+
+{{ $sz := "min-width(1280px) 1200px, 100vw"}}
+
+<figure>
+  <img
+    width="{{ $w }}"
+    height="{{ $h }}"
+    loading="lazy"
+    sizes="{{$sz}}"
+    srcset="
+      {{$c}}f_auto,w_360/{{$src}}   360w,
+      {{$c}}f_auto,w_720/{{$src}}   720w,
+      {{$c}}f_auto,w_1200/{{$src}} 1200w,
+      {{$c}}f_auto,w_2400/{{$src}} 2400w
+    "
+    src="{{$c}}f_auto,w_1200/{{$src}}"
+    alt="{{ $alt }}"
+  />
+{{ with .Get "caption" }}
+  <figcaption>{{ . }}</figcaption>
+{{ end }}
+</figure>

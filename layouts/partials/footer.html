@@ -1,0 +1,25 @@
+{{ $colo := $.Site.Params.colo }}
+{{ $generator := $colo.generator }}
+{{ $host := $colo.host }}
+{{ $repo := $colo.repo }}
+
+{{ $fonts := slice }}
+
+{{ range $colo.fonts }}
+  {{ $fonts = $fonts | append  (printf `<a href="%s">%s</a>` .url .name)}}
+{{ end }}
+
+<footer class="container">
+  <div class="h5 panic">Don't Panic.</div>
+  <ul class="social">
+    {{ range $.Site.Params.social }}
+      <li><a href="{{ .url }}">{{ .name }}</a></li>
+    {{ end }}
+  </ul>
+  <div class="colo">
+    <p>Made with <a href="{{ $generator.url }}">{{ $generator.name }}</a>.</p>
+    <p>Set in {{ delimit $fonts "," " and "}}.</p>
+    <p>Hosted on <a href="{{ $host.url }}">{{ $host.name }}</a>.</p>    
+    <p>Source code on <a href="{{ $repo }}">Github</a>.</p>    
+  </div>
+</footer>

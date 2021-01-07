@@ -1,0 +1,9 @@
+<a href="{{.RelPermalink}}" class="thumbnail" style="--span-cols: {{.Params.thumbnail.cols}}">
+    <div class="thumbnail-img">
+      <!-- TODO srcset and sizes -->
+      <img src="{{.Site.Params.cloudurl}}{{.Params.thumbnail.src}}" alt="" />
+    </div>
+    <div class="title-wrap h5">
+      <span class="">{{.Title}}</span>&nbsp;·&nbsp;<span class="accent">{{.Params.client}}</span>
+    </div>
+</a>

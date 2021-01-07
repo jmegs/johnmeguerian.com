@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="system">
+  <head>
+    {{- partial "meta-tags" . -}}
+    {{- partial "css" . -}} 
+    {{- partial "js" . -}}
+    {{- partial "initial-color" . -}}
+    <!-- Fathom - beautiful, simple website analytics -->
+    <script src="https://cdn.usefathom.com/script.js" data-site="TVQPDWBA" data-excluded-domains="localhost" defer></script>
+  </head>
+  <body>
+    {{- partial "navbar" . -}}
+    <main class="container">
+      {{ block "main" . }} 
+      {{ end }}
+    </main>
+    {{- partial "footer" . -}}
+  </body>
+</html>
