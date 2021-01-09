@@ -14,7 +14,7 @@
   </div>
   <div class="thumbnails">
     {{ range where .Site.RegularPages "Section" "projects" }}
-        {{ partial "thumbnail" (dict "Src" .Params.thumbnail.src "URL" .URL "Cols" .Params.thumbnail.cols "Title" .Title "Client" .Params.client) }}
+        {{ partial "thumbnail" (dict "Src" .Params.thumbnail.src "URL" .RelPermalink "Cols" .Params.thumbnail.cols "Title" .Title "Client" .Params.client) }}
     {{ end }}
     {{ range .Site.Data.sideprojects }}
         {{ partial "thumbnail" (dict "Src" .thumbnail.src "URL" .URL "Cols" .thumbnail.cols "Title" .name "External" true) }}
