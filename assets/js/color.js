@@ -1,80 +1,81 @@
-init()
+document.querySelector(".themeswitch").addEventListener("click", onChange);
 
-function getTheme() {
-  return document.documentElement.dataset.theme
-}
+window
+    .matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", onPreferenceChange);
 
-function setTheme(theme) {
-  localStorage.setItem('theme', theme)
-  document.documentElement.dataset.theme = theme
-  return theme
-}
+function onChange() {
+    // if this is the first time clicking the theme button
+    // note that they actually chose a preference
+    if (!theme.hasPreference) {
+        theme.hasPreference = true;
+    }
 
-function setUserPreference() {
-  localStorage.setItem('has-theme-preference', true)
-}
+    // temporarily disable css transitions so it's snappy
+    // https://paco.sh/blog/disable-theme-transitions
+    const css = document.createElement("style");
+    css.type = "text/css";
+    css.appendChild(
+        document.createTextNode(
+            `* {
+           -webkit-transition: none !important;
+           -moz-transition: none !important;
+           -o-transition: none !important;
+           -ms-transition: none !important;
+           transition: none !important;
+        }`
+        )
+    );
+    document.head.appendChild(css);
 
-function hasUserPreference() {
-  return localStorage.getItem('has-theme-preference')
+    // set the next theme
+    theme.toggle();
+
+    // re-enable transitions
+    // calling getComputedStyle forces the browser to redraw
+    const _ = window.getComputedStyle(css).opacity;
+    document.head.removeChild(css);
 }
 
 function onPreferenceChange(event) {
-  // if they have manually selected a theme
-  // don't change it on them if the OS changes
-  if (hasUserPreference()) return
+    // so the system preference just changed...
+    // if they have already manually selected a theme
+    // don't change it on them when the OS changes
+    if (theme.hasPreference) return;
 
-  if (event.matches) {
-    setTheme('dark')
-  } else {
-    setTheme('light')
-  }
+    // otherwise, update the theme for them
+    if (event.matches) {
+        theme.current = "dark";
+    } else {
+        theme.current = "light";
+    }
 }
 
-function colorModeMQ() {
-  return window.matchMedia('(prefers-color-scheme: dark)')
-}
+const theme = {
+    themes: ["light", "dark"],
 
-function toggleTheme() {
-  const themes = ['light', 'dark']
+    get current() {
+        return document.documentElement.dataset.theme;
+    },
 
-  // if this is the first time clicking the theme button
-  // note that they actually chose a preference
-  if (!hasUserPreference()) {
-    setUserPreference()
-  }
+    set current(val) {
+        if (!this.themes.includes(val)) return;
+        localStorage.setItem("theme", val);
+        document.documentElement.dataset.theme = val;
+    },
 
-  // temporarily disable css transitions so it's snappy
-  // https://paco.sh/blog/disable-theme-transitions
-  const css = document.createElement('style')
-  css.type = 'text/css'
-  css.appendChild(
-    document.createTextNode(
-      `* {
-       -webkit-transition: none !important;
-       -moz-transition: none !important;
-       -o-transition: none !important;
-       -ms-transition: none !important;
-       transition: none !important;
-    }`
-    )
-  )
-  document.head.appendChild(css)
+    get hasPreference() {
+        return localStorage.getItem("has-theme-preference");
+    },
 
-  // set the next theme
-  let theme = getTheme()
-  let index = themes.indexOf(theme)
-  let max = themes.length - 1
-  let next = index + 1 > max ? 0 : index + 1
+    set hasPreference(val) {
+        localStorage.setItem("has-theme-preference", val);
+    },
 
-  theme = setTheme(themes[next])
-
-  // re-enable transitions
-  // calling getComputedStyle forces the browser to redraw
-  const _ = window.getComputedStyle(css).opacity
-  document.head.removeChild(css)
-}
-
-function init() {
-  document.querySelector('.themeswitch').addEventListener('click', toggleTheme)
-  colorModeMQ().addEventListener('change', onPreferenceChange)
-}
+    toggle() {
+        let currIndex = this.themes.indexOf(this.current);
+        let max = this.themes.length - 1
+        let next = currIndex + 1 > max ? 0 : currIndex + 1;
+        this.current = this.themes[next];
+    },
+};

@@ -1,2 +1,5 @@
+{{ $initialColor := resources.Get "js/initial-color.js" | minify }}
+<script>{{ $initialColor.Content | safeJS }}</script>
+
 {{ $built := resources.Get "js/app.js" | js.Build "app.js" }}
 <script type="text/javascript" src="{{ $built.RelPermalink }}" defer></script>

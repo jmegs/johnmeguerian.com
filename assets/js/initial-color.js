@@ -1,5 +1,4 @@
-<script>
-  function getInitialTheme() {
+function getInitialTheme() {
     // did they already set it?
     let hasStoredPref = localStorage.getItem('theme')
     if (hasStoredPref) return hasStoredPref
@@ -26,4 +25,3 @@
 
   // do it before the site loads
   setInitialTheme()
-</script>
