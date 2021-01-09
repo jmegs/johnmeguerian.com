@@ -7,5 +7,8 @@
   "scripts": {
     "build": "hugo --gc --minify",
     "dev": "hugo server -D"
+  },
+  "prettier": {
+      "tabWidth": 4
   }
 }
