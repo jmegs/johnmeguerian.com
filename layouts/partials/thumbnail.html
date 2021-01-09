@@ -1,9 +1,51 @@
-<a href="{{.RelPermalink}}" class="thumbnail" style="--span-cols: {{.Params.thumbnail.cols}}">
-    <div class="thumbnail-img">
-      <!-- TODO srcset and sizes -->
-      <img src="{{.Site.Params.cloudurl}}{{.Params.thumbnail.src}}" alt="" />
-    </div>
-    <div class="title-wrap h5">
-      <span class="">{{.Title}}</span>&nbsp;·&nbsp;<span class="accent">{{.Params.client}}</span>
-    </div>
+<!-- 
+  .Src
+  .URL
+  .Cols
+  .Title
+  .Client
+  .External
+ -->
+
+ {{ $c := "https://res.cloudinary.com/jmegs/" }}
+ <!-- 
+     out of a 1920px possible row width
+     image width is calculated (roughly) by the formua
+     total_width * (item_cols / total_cols)
+  -->
+ {{ $percent := div .Cols 12.0 }}
+ {{ $vw := mul $percent 100 }}
+ {{ $w := mul 1920 $percent }}
+ {{ $h := 1080 }}
+
+ <a
+  href="{{.URL}}"
+  class="thumbnail"
+  style="--span-cols: {{.Cols}}"
+>
+  <div class="thumbnail-img">
+    <img
+        width="{{$w}}"
+        height="{{$h}}" 
+        sizes="(min-width: 768px) {{$vw}}vw, 100vw"
+        srcset="
+            {{$c}}f_auto,w_360/{{.Src}}   360w,
+            {{$c}}f_auto,w_720/{{.Src}}   720w,
+            {{$c}}f_auto,w_{{$w}}/{{.Src}} 1200w,
+            {{$c}}f_auto,w_{{mul $w 2}}/{{.Src}} 2400w
+        "
+        src="{{$c}}{{.Src}}" 
+        alt="" />
+  </div>
+  <div class="title-wrap h5 {{ if .External }}icon-text{{end}}">
+    <span class="">{{.Title}}</span>
+    {{ with .Client }}
+      &nbsp;·&nbsp;
+      <span class="accent">{{.}}</span>
+    {{ end }}
+    {{ if .External }}
+      {{- partial "icon" "external-link" -}}
+    {{ end }}
+  </div>
 </a>
+

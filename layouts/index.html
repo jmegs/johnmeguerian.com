@@ -13,43 +13,12 @@
     <h2>Select Work and Side Projects</h2>
   </div>
   <div class="thumbnails">
-    <!-- #region projects -->
     {{ range where .Site.RegularPages "Section" "projects" }}
-    <a
-      href="{{.RelPermalink}}"
-      class="thumbnail"
-      style="--span-cols: {{.Params.thumbnail.cols}}"
-    >
-      <div class="thumbnail-img">
-        <!-- TODO srcset and sizes -->
-        <img src="{{.Site.Params.cloudurl}}{{.Params.thumbnail.src}}" alt="" />
-      </div>
-      <div class="title-wrap h5">
-        <span class="">{{.Title}}</span>
-        &nbsp;·&nbsp;
-        <span class="accent">{{.Params.client}}</span>
-      </div>
-    </a>
+        {{ partial "thumbnail" (dict "Src" .Params.thumbnail.src "URL" .URL "Cols" .Params.thumbnail.cols "Title" .Title "Client" .Params.client) }}
     {{ end }}
-    <!-- #endregion -->
-    <!-- #region sideprojects -->
     {{ range .Site.Data.sideprojects }}
-    <a
-      href="{{.url}}"
-      class="thumbnail"
-      style="--span-cols: {{.thumbnail.cols}}"
-    >
-      <div class="thumbnail-img">
-        <!-- TODO srcset and sizes -->
-        <img src="{{$.Site.Params.cloudurl}}{{.thumbnail.src}}" alt="" />
-      </div>
-      <div class="title-wrap h5 icon-text">
-        <span class="">{{.name}}</span>
-        {{- partial "icon" "external-link" -}}
-      </div>
-    </a>
+        {{ partial "thumbnail" (dict "Src" .thumbnail.src "URL" .URL "Cols" .thumbnail.cols "Title" .name "External" true) }}
     {{ end }}
-    <!-- #endregion -->
   </div>
 </section>
 
