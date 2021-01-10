@@ -10,9 +10,6 @@
   {{ $href = "#"}}
 {{ end }}
 
-<a href="{{ $href }}" class="navbutton" title="see latest commit">
-  <div class="icon-text meta">
-    {{- partial "icon" "commit" -}}
-    <span>{{ or (substr $commitref 0 7) "Local" }}</span>
-  </div>
+<a href="{{ $href }}" title="see latest commit" class="commit-link">
+    {{- or (substr $commitref 0 7) "Local" -}}
 </a>

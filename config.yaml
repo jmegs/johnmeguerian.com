@@ -9,9 +9,9 @@ disableKinds: [taxonomy, term, category, RSS]
 
 menu:
   main:
-  - identifier: work
-    name: Work
-    url: /
+  - identifier: about
+    name: About
+    url: /#about
     weight: 1
   - identifier: posts
     name: Posts
