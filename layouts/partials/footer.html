@@ -20,6 +20,6 @@
     <p>Made with <a href="{{ $generator.url }}">{{ $generator.name }}</a>.</p>
     <p>Set in {{ delimit $fonts "," " and "}}.</p>
     <p>Hosted on <a href="{{ $host.url }}">{{ $host.name }}</a>.</p>    
-    <p>Source code on <a href="{{ $repo }}">Github</a>.</p>    
+    <p>Latest commit is {{ partial "commitlink" . -}}.</p>    
   </div>
 </footer>

@@ -1,10 +1,20 @@
-<div class="navbar container">
-  <a href="/" class="navbutton"> {{- partial "icon" "smile" -}} </a>
-  {{- partial "commitlink" . -}} 
-  {{- partial "themeswitch" . -}}
-  <nav>
-    {{ range .Site.Menus.main }}
-    <a href="{{ .URL }}" class="navbutton meta">{{ .Name }}</a>
-    {{ end }}
-  </nav>
+<div class="navbar">
+    <div class="navbar-inner container">
+        <a href="/" class="navbar-logo">
+            <span class="icon-text">
+                {{ partial "icon" "smile" }}
+                <!-- <span class="accent">John Meguerian</span> -->
+            </span>
+        </a>
+        <nav>
+            {{ range .Site.Menus.main }}
+            <a href="{{ .URL }}" class="navbutton meta">{{ .Name }}</a>
+            {{ end }}
+            <button class="themeswitch" title="Toggle color theme">
+                {{ range slice "light" "dark" }}
+                <div class="option" id="{{.}}">{{- partial "icon" . -}}</div>
+                {{ end }}
+            </button>
+        </nav>
+    </div>
 </div>
