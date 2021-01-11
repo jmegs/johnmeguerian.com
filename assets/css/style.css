@@ -1,39 +1,5 @@
 @import './_reset.css';
-
-/* #region variables */
-:root {
-  --color-text-primary: #232323;
-  --color-mid: #87929F;
-  --color-dim: #DFE3E9;
-  --color-background: #ffffff;
-  --color-background-alpha: rgba(255,255,255,0.8);
-  --color-code-wash: rgba(128, 128, 128, 0.09);
-
-  --font-display: neue-haas-grotesk-display, sans-serif;
-  --font-text: neue-haas-grotesk-text, sans-serif;
-  --font-accent: ivypresto-display;
-
-  --baseline: 1.5rem;
-  --space-xs: calc(var(--baseline) * 0.25);
-  --space-sm: calc(var(--baseline) * 0.5);
-  --space-md: var(--baseline);
-  --space-lg: calc(var(--baseline) * 3);
-  --space-xl: calc(var(--baseline) * 6);
-  --space-measure: 69ch;
-
-  --duration: 400ms;
-  --easing: ease;
-}
-
-[data-theme="dark"] {
-  --color-text-primary: #ebebeb;
-  --color-background: #121212;
-  --color-background-alpha: rgba(18,18,18,0.8);
-  --color-mid: #707883;
-
-}
-
-/* #endregion */
+@import './_variables.css';
 
 /* #region document */
 html {

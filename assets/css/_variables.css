@@ -1,0 +1,41 @@
+:root {
+  --font-display: neue-haas-grotesk-display, sans-serif;
+  --font-text: neue-haas-grotesk-text, sans-serif;
+  --font-accent: ivypresto-display;
+
+  --baseline: 1.5rem;
+  --space-xs: calc(var(--baseline) * 0.25);
+  --space-sm: calc(var(--baseline) * 0.5);
+  --space-md: var(--baseline);
+  --space-lg: calc(var(--baseline) * 3);
+  --space-xl: calc(var(--baseline) * 6);
+  --space-measure: 69ch;
+
+  --duration: 400ms;
+  --easing: ease;
+  
+  --black: #121212;
+  --black-alpha: rgba(18, 18, 18, 0.9);
+  --gray-dark: #343434;
+  --gray-mid: #7f7f7f;
+  --gray-light: #d2d2d2;
+  --white: #ffffff;
+  --white-alpha: rgba(255,255,255, 0.9);
+  --wash: rgba(127, 127, 127, 0.09);
+}
+
+:root {
+  --color-text-primary: var(--black);
+  --color-mid: var(--gray-mid);
+  --color-background: var(--white);
+  --color-background-alpha: var(--white-alpha);
+  --color-code-wash: var(--wash);
+}
+
+[data-theme="dark"] {
+  --color-text-primary: var(--white);
+  --color-mid: var(--gray-mid);
+  --color-background: var(--black);
+  --color-background-alpha: var(--black-alpha);
+  --color-code-wash: var(--wash);
+}
