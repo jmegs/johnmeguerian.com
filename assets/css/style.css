@@ -42,6 +42,16 @@ section {
   padding: var(--space-lg) 0;
 }
 
+figure img {
+  background-color: var(--color-code-wash);
+  border-radius: 6px;
+}
+
+figcaption {
+  max-width: var(--space-measure);
+  padding: var(--space-sm) 0;
+}
+
 /* #endregion */
 
 /* #region type */
@@ -245,16 +255,6 @@ section {
 
 .project .gallery > * + * {
   margin-top: var(--space-lg);
-}
-
-.project figure img {
-  background-color: var(--color-code-wash);
-  border-radius: 6px;
-}
-
-.project figcaption {
-  max-width: var(--space-measure);
-  padding: var(--space-sm) 0;
 }
 /* #endregion */
 
