@@ -2,4 +2,9 @@
 <script>{{ $initialColor.Content | safeJS }}</script>
 
 {{ $built := resources.Get "js/app.js" | js.Build "app.js" }}
+
+{{ if hugo.IsProduction }} 
+  {{ $built = $built | minify | fingerprint | resources.PostProcess }} 
+{{ end }}
+
 <script type="text/javascript" src="{{ $built.RelPermalink }}" defer></script>

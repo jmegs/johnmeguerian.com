@@ -1,4 +1,6 @@
-document.querySelector(".themeswitch").addEventListener("click", onChange);
+document
+    .querySelector(".themeswitch")
+    .addEventListener("click", onChange);
 
 window
     .matchMedia("(prefers-color-scheme: dark)")
