@@ -337,7 +337,7 @@ pre:not(.chroma) {
     top: 0;
     z-index: 10;
     background-color: var(--color-background-alpha);
-    -webkit-backdrop-filter: saturate(120%) blur(20px); 
+    backdrop-filter: saturate(120%) blur(20px); 
 }
 
 .navbar-inner {
