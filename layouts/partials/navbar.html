@@ -8,7 +8,7 @@
         </a>
         <nav>
             {{ range .Site.Menus.main }}
-            <a href="{{ .URL }}" class="navbutton meta">{{ .Name }}</a>
+            <a href="{{ .URL }}" class="navbutton text-sm">{{ .Name }}</a>
             {{ end }}
             <button class="themeswitch" title="Toggle color theme">
                 {{ range slice "light" "dark" }}

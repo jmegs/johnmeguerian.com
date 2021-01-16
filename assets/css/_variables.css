@@ -10,6 +10,7 @@
   --space-lg: calc(var(--baseline) * 3);
   --space-xl: calc(var(--baseline) * 6);
   --space-measure: 69ch;
+  --space-container-padding: clamp(1rem, 3.125vw, var(--space-lg));
 
   --duration: 400ms;
   --easing: ease;

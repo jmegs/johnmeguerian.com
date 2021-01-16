@@ -3,7 +3,7 @@
 
 /* #region document */
 html {
-  font-size: 100%;
+  font-size: clamp(16px, 1.25vw, 20px);
   line-height: var(--baseline);
   scroll-behavior: smooth;
 }
@@ -25,17 +25,9 @@ main {
 
 .container {
   width: 100%;
-  max-width: 1280px;
-  margin-left: auto;
-  margin-right: auto;
-  
-  padding-left: var(--baseline);
-  padding-right: var(--baseline);
-
-  @media (min-width: 768px) {
-    padding-left: var(--space-lg);
-    padding-right: var(--space-lg);
-  }
+   
+  padding-left: var(--space-container-padding);
+  padding-right: var(--space-container-padding);
 }
 
 section {
@@ -77,8 +69,10 @@ figcaption {
 
 .h1.clamp { max-width: 18ch; }
 
-.meta {
-  font-size: 0.75rem;
+.text-sm { font-size: 0.875rem; }
+.text-xs { font-size: 0.75rem; }
+
+.caps {
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -109,10 +103,13 @@ figcaption {
 
 #intro {
     /* offset navbar padding */
-    padding-top: calc(var(--space-lg) - var(--space-sm) * 2);
+    padding-top: calc(var(--space-lg) - var(--space-sm) * 4);
 }
-#projects-header {
-  margin-bottom: var(--space-md);
+
+.section-header .icon {
+  width: 1em;
+  height: 1em;
+  margin-top: -2px;
 }
 .thumbnails {
   display: grid;
@@ -129,10 +126,10 @@ figcaption {
   display: grid;
   grid-template-rows: 1fr auto;
   height: 100%;
-  max-height: 75vh;
   
   @media (min-width: 768px) {
     grid-column: span var(--span-cols);
+    max-height: calc(50vw - var(--space-md) );
   }
 }
 
@@ -360,6 +357,11 @@ pre:not(.chroma) {
 
 .navbar nav a:hover {
     color: var(--color-mid);
+}
+
+.navbar .icon { 
+  width: 1rem; 
+  height: 1rem;
 }
 
 .navbar-logo .icon {

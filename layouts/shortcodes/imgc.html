@@ -6,7 +6,7 @@
 {{ $w := or (.Get "w") 1920 }}
 {{ $h := or (.Get "h") 1280 }}
 
-{{ $sz := "(min-width: 1280px) 1200px, 100vw"}}
+{{ $sz := "(min-width: 69ch) 69ch, 100vw"}}
 
 <figure>
   <img
@@ -17,10 +17,10 @@
     srcset="
       {{$c}}f_auto,w_360/{{$src}}   360w,
       {{$c}}f_auto,w_720/{{$src}}   720w,
-      {{$c}}f_auto,w_1200/{{$src}} 1200w,
-      {{$c}}f_auto,w_2400/{{$src}} 2400w
+      {{$c}}f_auto,w_1280/{{$src}} 1280w,
+      {{$c}}f_auto,w_2560/{{$src}} 2560w
     "
-    src="{{$c}}f_auto,w_1200/{{$src}}"
+    src="{{$c}}f_auto,w_1280/{{$src}}"
     alt="{{ $alt }}"
   />
 {{ with .Get "caption" }}

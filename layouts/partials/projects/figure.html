@@ -8,14 +8,14 @@
     width="{{ $w }}"
     height="{{ $h }}"
     loading="lazy"
-    sizes="(min-width: 1280px) 1200px, 100vw"
+    sizes="calc(100vw - clamp(1rem, 3.125vw, 4.5rem))"
     srcset="
       {{$c}}f_auto,w_360/{{.src}}   360w,
       {{$c}}f_auto,w_720/{{.src}}   720w,
-      {{$c}}f_auto,w_1200/{{.src}} 1200w,
-      {{$c}}f_auto,w_2400/{{.src}} 2400w
+      {{$c}}f_auto,w_1280/{{.src}} 1280w,
+      {{$c}}f_auto,w_2560/{{.src}} 2560w
     "
-    src="{{$c}}f_auto,w_1200/{{.src}}"
+    src="{{$c}}f_auto,w_1280/{{.src}}"
     alt="{{ with .alt }}{{.}}{{end}}"
   />
   {{ with .caption }}
